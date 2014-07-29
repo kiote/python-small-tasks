@@ -11,23 +11,33 @@ def same_sign(a, b):
 # our array
 ar = nprnd.randint(MIN_VAL, MAX_VAL, size = SIZE)
 
+pre_sums = []
 sums = []
 Accum = namedtuple('Accum', ['sum', 'begin', 'end'])
 
-# first sum element always equals to first element of array
-sums.append(Accum(ar[0], 0, 0))
+pre_sums.append(Accum(ar[0], 0, 0))
 
 # creating some pre-summing
 for i, elem in enumerate(ar):
   if i == 0: continue
   if same_sign(ar[i-1], ar[i]):
-    elem = sums[len(sums)-1]
+    elem = pre_sums[len(sums)-1]
     summ = elem.sum + ar[i]
     begin = elem.begin
     end = i
-    sums[len(sums)-1] = Accum(summ, begin, end)
+    pre_sums[len(sums)-1] = Accum(summ, begin, end)
   else:
-    sums.append(Accum(ar[i], i, i))
+    pre_sums.append(Accum(ar[i], i, i))
+
+sums.append(pre_sums[0])
+
+# and one more summing
+for i, elem in enumerate(pre_sums):
+  if i == 0: continue
+  if pre_sums[i-1].sum + pre_sums[i].sum > 0:
+    sums.append(Accum(pre_sums[i-1].sum + pre_sums[i].sum, pre_sums[i-1].begin, pre_sums[i].end))
+  else:
+    sums.append(pre_sums[i])
 
 max_sum = sums[0].sum
 max_ind = 0

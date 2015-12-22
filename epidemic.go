@@ -6,7 +6,11 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math/rand"
+	"time"
+)
 
 func main() {
   var hermits = map[int]int{
@@ -17,5 +21,16 @@ func main() {
     5: 0,
     6: 0,
   }
-  fmt.Println(hermits[1])
+
+  // make hermit number 1 feel sick
+  hermits[1] = 1
+
+  rand.Seed(time.Now().UTC().UnixNano())
+  //whos_next := rand.Intn(len(hermits))
+
+  for i:=0; i<=100; i++ {
+	whos_next := rand.Intn(len(hermits)) + 1
+	fmt.Println(whos_next)
+  }
+  //fmt.Println(whos_next)
 }

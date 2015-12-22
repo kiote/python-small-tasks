@@ -12,25 +12,37 @@ import (
 	"time"
 )
 
-func main() {
-  var hermits = map[int]int{
-    1: 0,
-    2: 0,
-    3: 0,
-    4: 0,
-    5: 0,
-    6: 0,
-  }
+var hermits = map[int]int{
+	1: 0,
+	2: 0,
+	3: 0,
+	4: 0,
+	5: 0,
+	6: 0,
+}
 
+func main() {
   // make hermit number 1 feel sick
   hermits[1] = 1
 
   rand.Seed(time.Now().UTC().UnixNano())
-  //whos_next := rand.Intn(len(hermits))
+  whos_next := 1
 
-  for i:=0; i<=100; i++ {
-	whos_next := rand.Intn(len(hermits)) + 1
-	fmt.Println(whos_next)
+  for whos_next == 1 {
+		whos_next = rand.Intn(len(hermits)) + 1
   }
-  //fmt.Println(whos_next)
+  fmt.Println(whos_next)
+	if spread(whos_next) == 0 {
+		// what should be done here?
+	}
+
+}
+
+// returns 0 if next hermit is not sick yet
+func spread(hermit_id int) int {
+	// need to remember if he was sick
+	he_was_sick = hermits[hermit_id]
+	// now he is sick anyway
+	hermits[hermit_id] = 1
+	return he_was_sick
 }

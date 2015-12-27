@@ -22,33 +22,38 @@ var hermits = map[int]int{
 }
 
 func main() {
-  // make hermit number 1 feel sick
-  hermits[1] = 1
+	// make hermit number 1 feel sick
+	hermits[1] = 1
 
-  rand.Seed(time.Now().UTC().UnixNano())
-  current_sick := 1
-  whos_next := current_sick
-  whos_next = random_next(whos_next, current_sick)
+	rand.Seed(time.Now().UTC().UnixNano())
+	for i := 1; i <= 100; i++ {
+		hermits = map[int]int{1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0}
+		currentSick := 1
+		whosNext := currentSick
+		whosNext = randomNext(whosNext, currentSick)
 
-  for spread(whos_next) == 0 {
-    fmt.Println("one more")
-    current_sick = whos_next
-    whos_next = random_next(whos_next, current_sick) 
-  }
+		count := 0
+		for spread(whosNext) == 0 {
+			count++
+			currentSick = whosNext
+			whosNext = randomNext(whosNext, currentSick)
+		}
+		fmt.Println(count)
+	}
 }
 
-func random_next(hermit_id int, current_sick int) int {
-  for hermit_id == current_sick {
-    hermit_id = rand.Intn(len(hermits)) + 1
-  }
-  return hermit_id
+func randomNext(hermitID int, currentSick int) int {
+	for hermitID == currentSick {
+		hermitID = rand.Intn(len(hermits)) + 1
+	}
+	return hermitID
 }
 
 // returns 0 if next hermit is not sick yet
-func spread(hermit_id int) int {
+func spread(hermitID int) int {
 	// need to remember if he was sick
-	he_was_sick := hermits[hermit_id]
+	heWasSick := hermits[hermitID]
 	// now he is sick anyway
-	hermits[hermit_id] = 1
-	return he_was_sick
+	hermits[hermitID] = 1
+	return heWasSick
 }

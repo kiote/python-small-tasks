@@ -1,4 +1,6 @@
 bin/
+venv/
+.ipynb_checkpoints/
 pkg/
 src/
 *.swp

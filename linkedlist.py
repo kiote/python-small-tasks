@@ -4,20 +4,32 @@ class LinkedList(object):
         self.next = None
 
     def add(self, value):
-        lst = LinkedList(value)
-        self.next = lst
-        return lst
-
-    def __str__(self):
-        print str(self.value)
-
-    def next(self):
-        return self.next
+        current_list = self
+        new_list = LinkedList(value)
+        while current_list.next is not None:
+            current_list = current_list.next
+        current_list.next = new_list
 
 
-lst = LinkedList(1)
-lst.add(2).add(3).add(4)
+class TestLinkedList:
+    def test_init_sets_value(self):
+        assert LinkedList(3).value == 3
 
-print lst
-lst.next 
-print lst
+    def test_init_sets_next_to_none(self):
+        assert LinkedList(3).next is None
+
+    def test_add_adds_next_element(self):
+        list = LinkedList(1)
+        list.add(2)
+        assert list.next is not None
+
+    def test_add_creates_new_linked_object(self):
+        list = LinkedList(1)
+        list.add(2)
+        assert type(list.next) == LinkedList
+
+    def test_add_adds_several_elements(self):
+        list = LinkedList(1)
+        list.add(2)
+        list.add(3)
+        assert list.next.next.value == 3

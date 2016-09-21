@@ -13,3 +13,7 @@ Have to be enough, but if you are such a lazy thing as me:
    * `pip install numpy`
    * `python setup.py install --user`
    * `nosetests -v sklearn`
+
+## How to run particular test
+
+For example, [test-common](https://github.com/scikit-learn/scikit-learn/blob/master/sklearn/tests/test_common.py): `nosetests sklearn.tests.test_common`

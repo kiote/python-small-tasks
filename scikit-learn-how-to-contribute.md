@@ -1,3 +1,5 @@
+## How to setup the environment
+
 Read the [contributing manual](http://scikit-learn.org/dev/developers/contributing.html).
 Have to be enough, but if you are such a lazy thing as me:
 

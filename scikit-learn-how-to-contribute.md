@@ -19,3 +19,15 @@ It have to be enough, but if you are such a lazy thing as I am:
 ## How to run particular test
 
 For example, [test-common](https://github.com/scikit-learn/scikit-learn/blob/master/sklearn/tests/test_common.py): `nosetests sklearn.tests.test_common`
+
+## How to add git remote
+
+To be able to fetch changes from base repo.
+
+What remotes do we have already:
+
+    git remote -v
+
+Add remote:
+
+    git remote add new-remote-name https://github.com/user/repo.git

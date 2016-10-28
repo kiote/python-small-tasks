@@ -8,10 +8,9 @@ It have to be enough, but if you are such a lazy thing as I am:
 3. Make sure `make` runs sucessfully in scikit-learn/ directory
     * `pip install scipy`
     * `pip install cython`
-    * `make`
+    * `pip install -U scikit-learn`
 4. Make sure you can run tests:
    * `pip install nose`
-   * `pip install scipy`
    * `pip install numpy`
    * `python setup.py install --user`
    * `nosetests -v sklearn`

@@ -10,6 +10,3 @@ Aim of the [issue](https://github.com/scikit-learn/scikit-learn/issues/7297) is 
 
 https://github.com/scikit-learn/scikit-learn/issues/7763
 
-## 6741
-
-https://github.com/scikit-learn/scikit-learn/pull/6741

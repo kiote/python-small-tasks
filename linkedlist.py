@@ -1,35 +1,15 @@
-class LinkedList(object):
-    def __init__(self, value):
-        self.value = value
+class Node(object):
+    def __init__(self, data):
+        self.data = data
         self.next = None
 
-    def add(self, value):
-        current_list = self
-        new_list = LinkedList(value)
-        while current_list.next is not None:
-            current_list = current_list.next
-        current_list.next = new_list
+head = Node(1)
+node2 = Node(2)
+head.next = node2
+node3 = Node(3)
+node2.next = node3
 
-
-class TestLinkedList:
-    def test_init_sets_value(self):
-        assert LinkedList(3).value == 3
-
-    def test_init_sets_next_to_none(self):
-        assert LinkedList(3).next is None
-
-    def test_add_adds_next_element(self):
-        list = LinkedList(1)
-        list.add(2)
-        assert list.next is not None
-
-    def test_add_creates_new_linked_object(self):
-        list = LinkedList(1)
-        list.add(2)
-        assert type(list.next) == LinkedList
-
-    def test_add_adds_several_elements(self):
-        list = LinkedList(1)
-        list.add(2)
-        list.add(3)
-        assert list.next.next.value == 3
+ref = head
+while(ref):
+    print(ref.data)
+    ref = ref.next

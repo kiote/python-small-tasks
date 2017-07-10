@@ -20,6 +20,7 @@ def remove(list, elem):
 
     if (current == elem):
         current = elem.next
+        saved_head = current
     else:
         prev = current
         current = current.next
@@ -44,5 +45,5 @@ node2.next = node3
 
 printList(myList)
 
-myList = remove(myList, node3)
+myList = remove(myList, head)
 printList(myList)

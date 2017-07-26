@@ -18,15 +18,17 @@ class Stack(object):
             self.tail = elem
     def pop(self):
         current = self.head
-        if (not current.next):
-            self.head = None
-            return current
         if (not current):
             return None
-        while (current.next != self.tail):
+        if (current.next is None):
+            self.head = None
+            self.tail = None
+            return current
+        while ((current.next != self.tail) and (current.next)):
             current = current.next
+        old_tail = self.tail
         self.tail = current
-        return self.tail
+        return old_tail
     def print(self):
         current = self.head
         while(current):
@@ -42,9 +44,13 @@ stack.push(node1)
 stack.push(node2)
 stack.push(node3)
 
-stack.print()
+#stack.print()
 
-stack.pop()
-stack.pop()
-
-stack.print()
+e = stack.pop()
+print(e.data)
+e = stack.pop()
+print(e.data)
+e = stack.pop()
+print(e.data)
+#stack.pop()
+#stack.print()

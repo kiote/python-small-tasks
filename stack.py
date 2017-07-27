@@ -28,6 +28,7 @@ class Stack(object):
             current = current.next
         old_tail = self.tail
         self.tail = current
+        current.next = None
         return old_tail
     def print(self):
         current = self.head
@@ -52,5 +53,3 @@ e = stack.pop()
 print(e.data)
 e = stack.pop()
 print(e.data)
-#stack.pop()
-#stack.print()

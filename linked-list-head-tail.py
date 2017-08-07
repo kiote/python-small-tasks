@@ -11,10 +11,13 @@ class List(object):
     def addAfter(self, elem, elem2):
         current = self.head
         inserted = False
+        if (elem == self.tail):
+            elem.tail = elem2
         while (current and current != elem):
             current = current.next
         if (current == elem):
-            elem2.next = current.next
+            if (current.next):
+                elem2.next = current.next
             current.next = elem2
             inserted = True
         return inserted
@@ -39,6 +42,5 @@ l = List(node1)
 l.add(node2)
 l.add(node3)
 
-l.print()
-print(l.addAfter(node2, node4))
+l.addAfter(node3, node4)
 l.print()

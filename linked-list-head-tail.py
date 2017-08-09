@@ -21,6 +21,21 @@ class List(object):
             current.next = elem2
             inserted = True
         return inserted
+    def delete(self, elem):
+        current = self.head
+        prev = None
+        if (elem == current):
+            self.head = current.next
+            return True
+        while (current):
+            prev = current
+            current = current.next
+            if (current == elem):
+                prev.next = current.next
+                if (current.next == None):
+                    self.tail = prev
+                return True
+        return False
     def print(self):
         current = self.head
         while (current.next):
@@ -43,4 +58,7 @@ l.add(node2)
 l.add(node3)
 
 l.addAfter(node3, node4)
+l.print()
+
+l.delete(node1)
 l.print()

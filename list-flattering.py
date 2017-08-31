@@ -12,6 +12,23 @@ class List(object):
                 while(self.tail.next):
                     self.tail = self.tail.next
             current = current.next
+    def unflatten(self, elem=None):
+        if (not elem):
+            elem = self.head
+        if (elem != self.tail and elem.next):
+            print("elem " + str(elem.data))
+            if (elem.child):
+                print("has child")
+                self.poke_child(elem.child)
+                self.unflatten(elem.child)
+            else:
+                print("has no child")
+                self.unflatten(elem.next)
+        else:
+            print("elem " + str(elem.data) + " is a tail or has no next")
+    def poke_child(self, child):
+        child.prev.next = None
+        child.prev = None
     def print(self):
         self.flatten()
         current = self.head
@@ -76,4 +93,7 @@ node17.prev = node16
 
 
 lst = List(node1, node5)
+
+lst.flatten()
+lst.unflatten()
 lst.print()

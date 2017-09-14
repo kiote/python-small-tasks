@@ -1,6 +1,6 @@
 class Node(object):
-    def __init__(self, value):
-        self.value = value
+    def __init__(self, data):
+        self.data = data
         self.left = None
         self.right = None
 
@@ -9,7 +9,6 @@ class Tree(object):
         self.head = head
 
 def initTree():
-    print("Inint tree:")
     node1 = Node(5)
     node2 = Node(3)
     node3 = Node(10)
@@ -25,3 +24,4 @@ def initTree():
     node2.right = node5
     node3.left = node6
     node3.right = node7
+    return tree
